@@ -1,0 +1,126 @@
+
+/* Letter-by-Letter Reveal Animation */
+@keyframes letter-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+.reveal-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: letter-reveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  white-space: pre;
+}
+
+/* ── About The Foundary — split mission section ── */
+.foundary-section {
+  position: relative;
+  background: #ffffff;
+  padding: 8rem 0;
+  overflow: hidden;
+}
+.foundary-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: rgba(0, 140, 255, 0.09);
+  filter: blur(140px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.foundary-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.foundary-tag {
+  color: #008CFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  display: inline-block;
+  margin-bottom: 1.35rem;
+}
+.foundary-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 850;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin: 0;
+}
+.foundary-title .letter-reveal-trigger { color: #008CFF; white-space: nowrap; }
+.foundary-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 2.75rem;
+  border-left: 2px solid rgba(0, 140, 255, 0.14);
+}
+.foundary-p {
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .foundary-section { padding: 5.5rem 1.5rem; }
+  .foundary-grid { grid-template-columns: 1fr; grid-template-rows: auto auto; gap: 2rem; }
+  .foundary-left,
+  .foundary-right { width: 100%; }
+  .foundary-right { padding-left: 0; border-left: none; }
+}
+
+@media (max-width: 600px) {
+  .foundary-section { padding: 4.5rem 1rem; }
+  .foundary-grid { grid-template-rows: auto auto; gap: 1.5rem; }
+  .foundary-title { font-size: 2rem; }
+  .foundary-right { gap: 1.2rem; }
+}
+
+
+
+/* ── About The Foundary reveal (tag → title → paragraphs) ── */
+.foundary-tag {
+  opacity: 0;
+  animation: comp-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.foundary-title {
+  opacity: 0;
+  animation: comp-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+.foundary-p {
+  opacity: 0;
+  animation: comp-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.foundary-p:nth-of-type(1) { animation-delay: 0.3s; }
+.foundary-p:nth-of-type(2) { animation-delay: 0.45s; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .foundary-tag,
+  .foundary-title,
+  .foundary-p {
+    animation: none;
+    opacity: 1;
+  }
+}
+

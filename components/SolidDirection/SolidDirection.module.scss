@@ -1,0 +1,190 @@
+
+/* Get Solid Direction Section Styles */
+.solid-direction-section {
+  position: relative;
+  width: 100%;
+  height: 240vh; /* sphere expand → halo cover → video reveal (auto-scrolls through the rest) */
+  background-color: #ffffff;
+  overflow: visible;
+}
+
+.solid-direction-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.solid-direction-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* --- Video layer (revealed underneath the halo) --- */
+.sd-video-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.7s ease;
+}
+
+.sd-video-layer.revealed {
+  opacity: 1;
+}
+
+.sd-video-layer video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.sd-video-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 14, 0.25); /* subtle scrim so any overlaid content stays readable */
+}
+
+/* --- Dark circular mask that grows to cover the screen, then fades out --- */
+.sd-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: 220vmax;
+  height: 220vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #0d1526 0%, #05080f 55%, #000000 100%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: opacity 0.7s ease;
+}
+
+.sd-halo.revealed {
+  opacity: 0 !important;
+}
+
+/* --- three.js sphere canvas --- */
+.sd-sphere-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100% !important;   /* beat any inline px three.js might set → no overflow */
+  height: 100% !important;
+  max-width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Text gate (unchanged copy, centred as one unit, slides apart) --- */
+.sd-gate {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centre the whole phrase, not each half */
+  /* Space in the middle for the sphere to peek through. The two halves are now
+     balanced in width ("Unlock Your" ≈ "Future Path"), so this gap sits at the
+     screen centre — exactly where the sphere is. */
+  gap: clamp(140px, 16vw, 300px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.sd-half {
+  display: flex;
+  align-items: center;
+}
+
+.sd-half-left {
+  justify-content: flex-end;
+}
+
+.sd-half-right {
+  justify-content: flex-start;
+}
+
+.gate-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5.5vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 0;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.text-slate-900 {
+  color: #0f172a;
+}
+
+.text-blue-500 {
+  color: #008CFF;
+}
+
+/* --- Scroll progress indicator --- */
+.sd-progress-track {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 90px;
+  height: 2px;
+  background: #eee;
+  border-radius: 2px;
+  z-index: 10;
+  opacity: 0.6;
+}
+
+.sd-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #008CFF;
+  border-radius: 2px;
+}
+
+/* --- Responsiveness ---
+   On tablets and phones the two words + a sphere-sized gap cannot fit on one
+   line, so the phrase overflows and looks broken. Below 1024px we STACK the
+   phrase vertically instead: "Unlock Your" above, the sphere in the middle,
+   "Future Path" below. The JS slides the two lines up/down (instead of
+   left/right) to match. */
+@media (max-width: 1024px) {
+  .sd-gate {
+    flex-direction: column;
+    gap: clamp(120px, 32vw, 260px); /* vertical space for the sphere */
+  }
+
+  .sd-half-left,
+  .sd-half-right {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .gate-title {
+    font-size: clamp(1.9rem, 7vw, 3.4rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sd-gate {
+    gap: clamp(110px, 34vw, 220px);
+  }
+
+  .gate-title {
+    font-size: clamp(1.6rem, 8.5vw, 2.8rem) !important;
+  }
+}

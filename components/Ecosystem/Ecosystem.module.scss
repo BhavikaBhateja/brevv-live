@@ -1,0 +1,110 @@
+
+/* ── The Ecosystem — statement section ── */
+.ecosystem-section {
+  position: relative;
+  background: #ffffff;
+  padding: 9rem 0;
+  overflow: hidden;
+  text-align: center;
+}
+.ecosystem-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+.ecosystem-glow-1 {
+  width: 480px; height: 480px;
+  background: rgba(0, 140, 255, 0.16);
+  top: -120px; left: -60px;
+}
+.ecosystem-glow-2 {
+  width: 520px; height: 520px;
+  background: rgba(139, 92, 246, 0.14);
+  bottom: -180px; right: -80px;
+}
+.ecosystem-inner {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+}
+.ecosystem-tag {
+  color: #008CFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.6rem;
+}
+.ecosystem-tag::before,
+.ecosystem-tag::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #008CFF);
+}
+.ecosystem-tag::after {
+  background: linear-gradient(90deg, #008CFF, transparent);
+}
+.ecosystem-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin: 0 auto 1.85rem;
+  max-width: 26ch;
+}
+.ecosystem-lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  line-height: 1.75;
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+.ecosystem-lead strong { color: #0f172a; font-weight: 700; }
+.ecosystem-lead em { font-style: italic; color: #0f172a; font-weight: 600; }
+.ecosystem-lead-2 { margin-top: 1.4rem; }
+.eco-hl { color: #008CFF; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .ecosystem-section { padding: 6rem 0; }
+}
+
+
+
+/* ── The Ecosystem statement reveal (tag → title → lead) ── */
+.ecosystem-tag {
+  opacity: 0;
+  animation: comp-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.ecosystem-title {
+  opacity: 0;
+  animation: comp-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+}
+.ecosystem-lead {
+  opacity: 0;
+  animation: comp-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards;
+}
+.ecosystem-lead-2 {
+  animation-delay: 0.38s;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ecosystem-tag,
+  .ecosystem-title,
+  .ecosystem-lead {
+    animation: none;
+    opacity: 1;
+  }
+}
+

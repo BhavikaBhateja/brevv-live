@@ -1,0 +1,363 @@
+
+/* Redesigned Footer matching reference screenshot */
+.footer {
+  background-color: #050811; /* Clean space slate footer background */
+  color: #ffffff;
+  padding: 100px 0 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-large-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 4rem;
+}
+
+.footer-large-brand img,
+.footer-large-brand svg {
+  width: 25vw;
+  max-width: 320px;
+  height: auto;
+  opacity: 0.95;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 4rem;
+  margin-bottom: 40px;
+}
+
+.footer-about p {
+  font-size: 1.15rem;
+  color: #ffffff;
+  line-height: 1.5;
+  font-weight: 600;
+  max-width: 320px;
+  margin-bottom: 2rem;
+}
+
+.footer-badges {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-badge-circle {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #ffffff;
+  color: #008CFF;
+  transform: translateY(-3px);
+}
+
+.footer-column h4 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  font-size: 0.925rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.06);
+  margin: 3rem 0;
+}
+
+.footer-hq {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.footer-hq h5 {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-hq p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  padding-top: 0;
+  border-top: none;
+}
+
+
+
+/* Redesigned Footer matching reference screenshot */
+.footer {
+  background: linear-gradient(180deg, #ffffff 0%, #75baff 25%, #008CFF 50%, #031833 75%, #050811 100%);
+  color: #ffffff;
+  padding: 100px 0 40px;
+  border-top: none;
+}
+
+.footer-large-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 4rem;
+}
+
+.footer-large-brand img,
+.footer-large-brand svg {
+  width: 50vw;
+  height: auto;
+  opacity: 0.95;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 4rem;
+  margin-bottom: 40px;
+}
+
+.footer-about p {
+  font-size: 1.15rem;
+  color: #ffffff;
+  line-height: 1.5;
+  font-weight: 600;
+  max-width: 320px;
+  margin-bottom: 2rem;
+}
+
+.footer-badges {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-badge-circle {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #ffffff;
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.footer-column h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin: 3rem 0;
+}
+
+.footer-hq {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.footer-hq h5 {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-hq p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  padding-top: 0;
+  border-top: none;
+}
+
+/* ── Footer animated background (rays + bokeh) ── */
+.footer { position: relative; overflow: hidden; }
+.footer-bg-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.footer-ray {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(50px);
+  transform-origin: top center;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.footer-ray-1 {
+  left: 15%;
+  width: 140px;
+}
+
+.footer-ray-2 {
+  left: 48%;
+  width: 180px;
+}
+
+.footer-ray-3 {
+  left: 80%;
+  width: 120px;
+}
+@keyframes footer-ray-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(7%, -9%) scale(1.18); }
+}
+.footer-bokeh-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.footer-bokeh-dot {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 50% !important;
+  filter: blur(1.5px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+
+
+

@@ -1,0 +1,194 @@
+
+/* Navbar */
+.navbar {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-speed) ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #00bfff 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.mobile-only-action {
+  display: none;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: rgba(0, 140, 255, 0.08);
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-main);
+  border-radius: 1px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+/* Modern Asymmetric Burger style */
+.menu-toggle span:nth-child(2) {
+  width: 16px;
+  align-self: flex-end;
+}
+
+.menu-toggle.active span:nth-child(2) {
+  width: 24px;
+  opacity: 0;
+}
+
+/* Sticky Navbar Animations & Style Overrides */
+nav {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+.nav-hidden {
+  transform: translateY(-120%) !important;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1) !important;
+}
+
+/* Show only the brand/logo when active (keep Brevv visible during hero/video) */
+nav.nav-brand-only > div > a#logo-link {
+  display: flex;
+}
+nav.nav-brand-only > div > *:not(a#logo-link) {
+  display: none !important;
+}
+nav.nav-brand-only #mobile-menu-drawer {
+  display: none !important;
+}
+.sticky-nav-active {
+  position: fixed !important;
+  top: 0;
+  left: 0 !important;
+  right: 0 !important;
+  transform: none !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important;
+  padding-top: 0.85rem !important;
+  padding-bottom: 0.85rem !important;
+  z-index: 1000 !important;
+}
+
+/* Change text to black when sticky nav is active */
+.sticky-nav-active a.text-white\/80 {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+.sticky-nav-active a.text-white\/80:hover {
+  color: #000 !important;
+}
+.sticky-nav-active #book-demo-trigger-nav {
+  color: #000 !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+.sticky-nav-active #book-demo-trigger-nav:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+.sticky-nav-active a[href="#cta"] {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.sticky-nav-active #mobile-menu-toggle {
+  color: #000 !important;
+}
+
+/* Dropdown triggers (Features / Solutions / Resources) turn dark on the white sticky nav */
+.sticky-nav-active .relative.group > button {
+  color: rgba(15, 23, 42, 0.75) !important;
+}
+.sticky-nav-active .relative.group:hover > button {
+  color: #0f172a !important;
+}
+
+/* Login — subtle pill highlight on hover */
+.nav-login-btn {
+  border-radius: 9999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-login-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.sticky-nav-active .nav-login-btn { color: rgba(15, 23, 42, 0.75) !important; }
+.sticky-nav-active .nav-login-btn:hover { background: rgba(15, 23, 42, 0.06); color: #0f172a !important; }
+
+/* Start Free Trial — lift + glow on hover */
+.nav-trial-btn {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease !important;
+  will-change: transform;
+}
+.nav-trial-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px -6px rgba(255, 255, 255, 0.4);
+  background-color: #ffffff !important;
+}
+.sticky-nav-active .nav-trial-btn:hover {
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.4);
+}
+
+

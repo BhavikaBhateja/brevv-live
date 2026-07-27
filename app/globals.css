@@ -1,3 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== Root design tokens (was styles/variables.css) ===== */
+/* CSS Variables */
+:root {
+  --primary-color: #3FA8FF;
+  --primary-hover: #1d91fc;
+  --primary-light: #eef7ff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-main: #ffffff;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --max-width: 1600px;
+  --transition-speed: 0.3s;
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* ===== Reset / base / layout container / buttons ===== */
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* NOTE: no `scroll-behavior: smooth` here — it fights GSAP ScrollTrigger's
+     pin/snap and window.scrollTo() calls, causing stutter when the pinned
+     sections engage. Smooth anchor scrolling is handled in JS instead. */
+  margin: 0;
+  padding: 0;
+  background-color: #050811;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+}
+
+/* Base Layout Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+@media (max-width: 1550px) {
+  :root, .comparison-section, .cta-section, .pricing-section, .faq-section {
+    --max-width: 1350px;
+  }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 4px 14px 0 rgba(0, 140, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(0, 140, 255, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: #d8ecff;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+
+/* ===== Section common styles (shared) ===== */
+/* Section Common Styles */
+.section {
+  padding: 100px 0;
+}
+
+.section-bg {
+  background-color: var(--bg-card);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.section-tag {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+
+/* ===== Global responsive breakpoints ===== */
+/* ==========================================================================
+   Fluid Responsive Layout Breakpoints (320px - 2560px+)
+   ========================================================================== */
+
+/* 1. Mobile Screens (320px â€“ 767px) */
+@media (max-width: 767px) {
+  :root {
+    --max-width: 100%;
+  }
+  .container {
+    padding: 0 1.25rem !important; /* Slightly snugger padding for small viewports */
+  }
+  /* Typography Scaling */
+  h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.25 !important;
+  }
+  h2 {
+    font-size: 1.85rem !important;
+  }
+  /* Horizontal Scroll Snap slider for Hero visual cards */
+  .hero-slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 1rem;
+    margin-top: 2rem;
+  }
+  .hero-visual-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    gap: 1.25rem !important;
+    padding: 1rem 0 !important;
+    width: 100% !important;
+    scroll-behavior: smooth;
+  }
+  .hero-visual-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .hero-visual-card {
+    flex: 0 0 82% !important;
+    width: 82% !important;
+    max-width: 82% !important;
+    scroll-snap-align: center !important;
+    transform: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    margin: 0 !important;
+  }
+  
+  .hero-slider-dots {
+    display: flex !important;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .hero-slider-dots .dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(0, 140, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .hero-slider-dots .dot.active {
+    width: 20px;
+    border-radius: 4px;
+    background-color: #008CFF;
+  }
+  .hero-cta-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  .btn-hero-explore, .btn-hero-secondary {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .triple-core-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 2. Tablet Screens (768px â€“ 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --max-width: 720px;
+  }
+  .container {
+    padding: 0 1.5rem;
+  }
+  /* Columns optimization */
+  .triple-core-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-visual-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .card-img-right {
+    grid-column: span 2;
+  }
+}
+
+/* 3. Laptop Screens (1024px â€“ 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  :root {
+    --max-width: 960px;
+  }
+}
+
+/* 4. Desktop Screens (1440px â€“ 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  :root {
+    --max-width: 1320px;
+  }
+}
+
+/* 5. Large Screens (1920px+) */
+@media (min-width: 1920px) {
+  :root {
+    --max-width: 1720px; /* Stretch container content to leverage wider screen real estate */
+  }
+  body {
+    font-size: 17px; /* Scaled body size for extremely high density displays */
+  }
+}
+
+
+/* ===== Shared gradient-text / reveal utilities ===== */
+/* Gradient Text Shine Animation for Headline */
+@keyframes textShine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+.animate-text-gradient {
+  background: linear-gradient(to right, #008CFF 0%, #9F7AEA 30%, #00C2FF 70%, #008CFF 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShine 4s linear infinite;
+}
+
+/* Text Reveal Animation for Headline */
+@keyframes reveal-text {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.reveal-line-1 {
+  display: block;
+  animation: reveal-text 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.reveal-line-2 {
+  display: block;
+  animation: reveal-text 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+}
+
